@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- Include stylesheet -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css"
+      rel="stylesheet"
+    />
+
+    <!-- for Thumbnail and title  -->
+    <input type="file" class="thumbnail" />
+    <div>Title : <input type="text" class="title" /></div>
+
+    <!-- Create the editor container -->
+    Description :
+    <div id="editor"></div>
+    <button class="btn">Upload my blog</button>
+
+    <!-- Include the Quill library -->
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+
+    <!-- Initialize Quill editor -->
+    <script>
+      const quill = new Quill("#editor", {
+        modules: {
+          toolbar: [
+            [{ header: [1, 2, false] }],
+            ["bold", "italic", "underline"],
+            [{ color: [] }],
+            ["code-block"],
+          ],
+        },
+        placeholder: "write the description here !",
+        theme: "snow", // or 'bubble'
+      });
+      document.body.querySelector(".btn").addEventListener("click", () => {
+        const formData = new FormData();
+        formData.append("title", document.body.querySelector(".title").value);
+        formData.append("description", quill.root.innerHTML);
+        formData.append(
+          "thumbnail",
+          document.body.querySelector(".thumbnail").files[0]
+        );
+        const upload = async() =>{
+            const response = await fetch("/api/v1/blogs/create",{
+                method : "POST",
+                body : formData
+            })
+            const data = await response.json()
+            console.log(data)
+            if(!data){
+                console.log("no data was found")
+            }
+        }
+        upload()
+      });
+    </script>
+  </body>
+</html>

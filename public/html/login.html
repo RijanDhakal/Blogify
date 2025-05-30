@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>login</title>
+  </head>
+  <body>
+    <form>
+      <input type="text" class="username" />
+      <input type="text" class="password" />
+      <button class="btn" type="submit">submit</button>
+    </form>
+    <script>
+      document.body.querySelector(".btn").addEventListener("click", (e) => {
+        e.preventDefault();
+        const register = async () => {
+          const response = await fetch("/api/v1/users/login", {
+            method: "POST",
+            body: JSON.stringify({
+              username: document.body.querySelector(".username").value,
+              password: document.body.querySelector(".password").value,
+            }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+          const data = await response.json();
+          console.log(data);
+        };
+        register();
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>register</title>
+  </head>
+  <body>
+    <form>
+      <input type="text" class="username" />
+      <input type="text" class="password" />
+      <input type="file" class="profile" />
+      <button class="btn" type="submit">submit</button>
+    </form>
+    <script>
+      document.body.querySelector(".btn").addEventListener("click", (e) => {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append(
+          "username",
+          document.body.querySelector(".username").value
+        );
+        formData.append(
+          "password",
+          document.body.querySelector(".password").value
+        );
+        formData.append(
+          "profile",
+          document.body.querySelector(".profile").files[0]
+        );
+        const register = async () => {
+          const response = await fetch(
+            "/api/v1/users/register",
+            {
+              method: "POST",
+              body: formData,
+            }
+          );
+          const data = await response.json();
+          console.log(data);
+        };
+        register();
+      });
+    </script>
+  </body>
+</html>
