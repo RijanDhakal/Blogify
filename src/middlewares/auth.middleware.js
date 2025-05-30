@@ -12,7 +12,7 @@ export const verifyJWT = asyncHandeler(async(req,res, next)=>{
             throw new costumeError(404,"Unauthorized request [ no access/refresh Token ] ")
         }
         const decoded = jwt.verify(token , process.env.ACCESS_TOKEN_SECRET)
-        const user = await User.findById(decoded._id)
+        const user = await User.findById(decoded._id).select("-password -refrehToken")
         if(!user){
             throw new costumeError(401, "Invalid access token")
         }

@@ -6,11 +6,10 @@
   text-decoration: none;
 }
 
-:root{
-    --main : #001;
-    --sec : rgb(216, 214, 214)
+:root {
+  --main: #001;
+  --sec: rgb(216, 214, 214);
 }
-
 
 html,
 body {
@@ -18,6 +17,7 @@ body {
   height: 100%;
   background-color: var(--main);
   color: var(--sec);
+  font-family: "Open Sans", sans-serif;
 }
 
 nav {
@@ -40,7 +40,7 @@ nav {
   gap: 2vw;
 }
 
-.nav-right-btn{
+.nav-right-btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,11 +55,10 @@ nav {
   border: 1px solid white;
   color: white;
   transition: all 0.3s ease-in-out;
-  &:hover{
+  &:hover {
     cursor: pointer;
     background-color: #114;
     scale: 0.95;
-
   }
 }
 
@@ -70,93 +69,170 @@ nav {
 }
 
 .changeTheme {
-    font-size: 50px;
+  font-size: 50px;
 }
 
 .middle {
-    width: 50%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1vw;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1vw;
 }
-.search{
-    width: 80%;
-    height: 40%;
-    background-color: transparent;
-    border: 2px solid white;
-    padding: 0 1vw;
-    color: white;
-}
-
-.search-btn{
-    height: 40%;
+.search {
+  width: 80%;
+  height: 40%;
+  background-color: transparent;
+  border: 2px solid white;
+  padding: 0 1vw;
+  color: white;
 }
 
-main{
-    height: 100%;
-    width: 100%;
-    padding: 2vw;
+.search-btn {
+  height: 40%;
 }
 
-footer{
-    padding: 2vw 0;
-    height: 50%;
-    width: 100%;
-    background-color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+main {
+  height: 100%;
+  width: 100%;
+  padding: 2vw 4vw;
 }
 
-.main-footer{
-    width: 95%;
-    height: 100%;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+footer {
+  padding: 2vw 0;
+  height: 50%;
+  width: 100%;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.main-footer-head{
-    font-size: 30px;
-    margin-bottom: 0.5vw;
+.main-footer {
+  width: 95%;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
-.main-footer-SubHead2{
-    font-size: 14px;
-    color: rgb(58, 248, 0);
-    text-decoration: underline;
+.main-footer-head {
+  font-size: 30px;
+  margin-bottom: 0.5vw;
 }
 
-.mail-container{
-    display: flex;
-    flex-direction: column;
-    margin-top: 4vw;
-    width: 50%;
-    height: 50%;
+.main-footer-SubHead2 {
+  font-size: 14px;
+  color: rgb(58, 248, 0);
+  text-decoration: underline;
 }
 
-.mail-body{
-    height: 85%;
-    padding: 1vw;
-}
-.mail-button{
-    height: 15%;
-    font-size: 20px;
-    font-weight: bold;
-    border: none;
-    background-color: rgb(35, 35, 119);
-    transition: all 0.33s ease-in-out;
-    &:hover{
-        cursor: pointer;
-        background-color: bisque;
-    }
+.mail-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 4vw;
+  width: 50%;
+  height: 50%;
 }
 
-.side-bar{
-    height: 80%;
-    width: 5%;
-    background-color: #001;
+.mail-body {
+  height: 85%;
+  padding: 1vw;
+}
+.mail-button {
+  height: 15%;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  background-color: rgb(35, 35, 119);
+  transition: all 0.33s ease-in-out;
+  &:hover {
+    cursor: pointer;
+    background-color: bisque;
+  }
+}
+
+.side-bar {
+  height: 80%;
+  width: 5%;
+  background-color: #001;
+}
+
+.blog-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  column-gap: 3vw;
+  flex-wrap: wrap;
+}
+
+.blog {
+  background-color: #111;
+  width: 20vw;
+  height: 20vw;
+  border-radius: 5px;
+}
+
+.blog-image-src {
+  width: 20vw;
+  height: 10vw;
+  object-fit: contain;
+}
+
+.blog-content {
+  padding: 0.5vw;
+  height: 10vw;
+}
+
+.blog-title {
+  color: white;
+  font-size: 1.12vw;
+  text-align: center;
+  margin-bottom: 1vw;
+  height: 3vw;
+}
+
+.blog-content-lower {
+  height: 5vw;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 1vw;
+  align-items: center;
+  justify-content: center;
+}
+
+.blog-description {
+  height: 4vw;
+  width: 100%;
+  overflow: hidden;
+  font-size: 1vw;
+}
+
+.blog-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.like {
+  background-color: transparent;
+  border-style: none;
+  transition: all 0.33s ease-in-out;
+  &:hover {
+    cursor: pointer;
+    scale: 0.9;
+  }
+}
+
+.material-symbols-outlined {
+  font-size: 2vw;
+  color: white;
+}
+
+.likeCount {
+  font-weight: bold;
 }

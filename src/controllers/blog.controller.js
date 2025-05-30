@@ -14,7 +14,7 @@ const createBlog = asyncHandeler(async(req,res)=>{
     }
     const thumbnail_file = req.files?.thumbnail[0]?.path
     if(!thumbnail_file){
-        throw new costumeError(404,"Thubnail for blog is needed")
+        throw new costumeError(404,"Thumbnail for blog is needed")
     }
     const thumbnail = await uploadOnCloud(thumbnail_file)
     const user = req.user
