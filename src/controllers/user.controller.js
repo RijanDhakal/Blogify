@@ -122,6 +122,16 @@ const loginUser = asyncHandeler(async (req, res) => {
     }
 
     const { accessToken, refreshToken } = await generateRefreshAndAcessToken(user._id)
+    const updatedUser = await User.findByIdAndUpdate(user._id,
+        {
+            $set:{
+                refreshToken : refreshToken
+            }
+        },
+        {
+            new : true
+        }
+    )
     const loggedInUser = await User.findById(user._id).select("-password -refreshToken")
 
     const options = {
@@ -132,7 +142,10 @@ const loginUser = asyncHandeler(async (req, res) => {
 
     return res.status(200)
         .cookie("accessToken", accessToken, options)
-        .cookie("refreshToken", refreshToken, options)
+        .cookie("refreshToken", refreshToken, {
+            httpOnly : true,
+            secure : true
+        })
         .json(
             new APIresponse(200, loggedInUser, "User loggedIn sucessfully")
         )

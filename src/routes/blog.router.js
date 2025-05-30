@@ -3,6 +3,7 @@ import {
   createBlog,
   deleteBlog,
   getBlog,
+  searchBlog,
   updateBlog,
 } from "../controllers/blog.controller.js";
 import { verifyJWT } from "../middlewares/auth.middleware.js";
@@ -26,5 +27,6 @@ router.route("/create").post(
 router.route("/update").patch(verifyJWT,updateBlog);
 router.route("/delete").delete(verifyJWT ,deleteBlog);
 router.route("/getBlog/:blogId").get(getBlog)
+router.route("/search").get(searchBlog)
 
 export default router;

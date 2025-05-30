@@ -17,7 +17,7 @@
     <nav>
       <!-- logo -->
       <!-- <img src="" alt="" class="logo"> -->
-      <span class="logo">Blogify</span>
+      <span class="logo"><a href="/" style="color: white;">Blogify</a></span>
       <div class="middle">
         <input class="search" type="text" />
         <button class="search-btn">search</button>
@@ -31,7 +31,7 @@
           <div class="changeTheme">*</div>
         </div>
         <div class="user">
-          <img src="" alt="" class="userProfie" />
+          <img src='/image/pp.png' alt="" class="userProfie" />
         </div>
       </div>
     </nav>
@@ -48,7 +48,7 @@
           <div class="blog-content">
             <h2 class="blog-title"><%= blog.title %></h2>
             <div class="blog-content-lower">
-              <p class="blog-description"><%= blog.description%>...</p>
+              <p class="blog-description"><%=blog.description%>...</p>
               <div class="blog-footer">
                 <button class="like">
                   <span class="material-symbols-outlined likeBTN"> favorite </span>

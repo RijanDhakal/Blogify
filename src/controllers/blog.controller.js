@@ -108,9 +108,35 @@ const getBlog = asyncHandeler(async(req,res)=>{
         blogOwner
     })
 })
+
+const searchBlog = asyncHandeler(async(req,res)=>{
+    const {query} = req.query
+    const blogs = await Blog.aggregate([
+        {
+            $search:{
+                index : "default",
+                text : {
+                    query : query,
+                    path : "title",
+                    fuzzy : {
+                        maxEdits : 1
+                    }
+                }
+            }
+        },
+        {
+            $limit:8
+        }
+    ])
+    if(blogs.length === 0){
+        return res.render("error")
+    }
+    res.render("index",{blogs})
+})
 export {
     updateBlog,
     createBlog,
     deleteBlog,
-    getBlog
+    getBlog,
+    searchBlog
 }
