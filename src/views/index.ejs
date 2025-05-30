@@ -37,6 +37,7 @@
       <div class="blog-container">
         <% blogs.forEach(blog => { %>
         <div class="blog">
+          <div class="blogId" style="display: none;"><%= blog._id %></div>
           <img
             src="<%= blog.thumbnail %>"
             alt="Blog Image"

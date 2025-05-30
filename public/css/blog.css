@@ -1,0 +1,61 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --main: #001;
+  --sec: rgb(216, 214, 214);
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background-color: #09090b;
+  display: flex;
+  justify-content: center;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  font-family: "Open Sans", sans-serif;
+  color: var(--sec);
+}
+
+.container {
+  padding: 3vw 0;
+  width: 80%;
+}
+
+.image {
+  background-color: #111;
+  width: 100%;
+  height: 65%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.blog-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.title {
+  margin-top: 3vw;
+  font-size: 3vw;
+  font-weight: bolder;
+  color: white;
+  text-align: center;
+}
+
+.blog-owner {
+  font-size: 1.5vw;
+  text-align: center;
+  margin-bottom: 2vw;
+}
+
+.blog-description {
+  font-size: 1vw;
+  line-height: 1.8;
+  white-space: pre-wrap; /* This also helps preserve formatting */
+}

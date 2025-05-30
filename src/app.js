@@ -33,7 +33,7 @@ import { verifyJWT } from "./middlewares/auth.middleware.js";
 
 //declare route
 app.use("/api/v1/users", userRouter);
-app.use("/api/v1/blog", blogRouter);
+app.use("/api/v1/blogs", blogRouter);
 
 app.get("/",async (req,res)=>{
   const {page=1 } = req.query

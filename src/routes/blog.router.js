@@ -7,8 +7,6 @@ import {
 } from "../controllers/blog.controller.js";
 import { verifyJWT } from "../middlewares/auth.middleware.js";
 import { upload } from "../middlewares/multer.middleware.js";
-import { Blog } from "../models/blog.model.js";
-import APIresponse from "../utilities/APIresponse.js";
 
 const router = Router();
 
@@ -27,6 +25,6 @@ router.route("/create").post(
 
 router.route("/update").patch(verifyJWT,updateBlog);
 router.route("/delete").delete(verifyJWT ,deleteBlog);
-
+router.route("/getBlog/:blogId").get(getBlog)
 
 export default router;

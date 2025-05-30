@@ -4,6 +4,7 @@ import costumeError from "../utilities/costumError.js";
 import APIresponse from "../utilities/APIresponse.js";
 import mongoose,{isValidObjectId} from "mongoose";
 import uploadOnCloud from "../utilities/uploadOncloudinary.js";
+import { User } from "../models/user.model.js";
 
 const createBlog = asyncHandeler(async(req,res)=>{
     const {title , description } = req.body
@@ -93,27 +94,19 @@ const deleteBlog = asyncHandeler(async(req,res)=>{
 })
 
 const getBlog = asyncHandeler(async(req,res)=>{
-    const {page=1 , limit=10 , query } = req.query
-    const blogs = await Blog.aggregate([
-        {
-            $sort:{
-                like : -1
-            }
-        },
-        {
-            $skip : (Number(page) - 1) * Number(limit)
-        },
-        {
-            $limit : Number(limit)
-        }
-    ])
-    if(blogs.length === 0){
-        throw new costumeError(404,"No Blogs availabe")
+    const {blogId} = req.params
+    if(!blogId){
+        return res.render("error")
     }
-    return res.status(200)
-    .json(
-        new APIresponse(200, blogs , "Blogs fetched sucessflly !")
-    )
+    const blog = await Blog.findById(blogId)
+    if(!blog){
+        return res.render("error")
+    }
+    const blogOwner = await User.findById(blog.creator)
+    return res.render("viewBlog" , {
+        blog,
+        blogOwner
+    })
 })
 export {
     updateBlog,
