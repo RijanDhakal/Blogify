@@ -48,7 +48,7 @@
               <p class="blog-description"><%= blog.description%>...</p>
               <div class="blog-footer">
                 <button class="like">
-                  <span class="material-symbols-outlined"> favorite </span>
+                  <span class="material-symbols-outlined likeBTN"> favorite </span>
                 </button>
                 <div class="likeCount"><%= blog.like %></div>
               </div>
@@ -56,6 +56,13 @@
           </div>
         </div>
         <% }) %>
+      </div>
+      <div class="page-navigation">
+        <button class="one nv">1</button>
+        <button class="two nv">2</button>
+        <button class="three nv">3</button>
+        <button class="four nv">4</button>
+        <button class="five nv">5</button>
       </div>
     </main>
     <footer>
@@ -78,5 +85,6 @@
       </div>
       <div class="side-bar"></div>
     </footer>
+    <script src="/js/index.js"></script>
   </body>
 </html>

@@ -36,8 +36,25 @@ app.use("/api/v1/users", userRouter);
 app.use("/api/v1/blog", blogRouter);
 
 app.get("/",async (req,res)=>{
-  const blogs = await Blog.find({})
-    res.render("index" , {blogs})
+  const {page=1 } = req.query
+  const limit = 8
+  const blogs = await Blog.aggregate([
+    {
+      $sort : {
+        like : -1
+      }
+    },
+    {
+      $skip : (Number(page)-1) * Number(limit)
+    },
+    {
+      $limit : Number(limit)
+    }
+  ])
+  if(blogs.length === 0){
+    return res.render("error")
+  }
+  res.render("index" , {blogs})
 })
 
 export default app;
