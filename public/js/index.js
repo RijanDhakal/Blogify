@@ -1,25 +1,10 @@
 const blogContainer = document.querySelectorAll(".blog")
 //redirecting for full-view of the blog
 blogContainer.forEach((blog) => {
-    blog.querySelector(".blog-title").addEventListener("click", (e) => {
+    blog.addEventListener("click", (e) => {
         // stopPropagation disable eventBubling in other elements of the node
         e.stopPropagation()
-        // window.location.href = `http://localhost:4000/api/v1/blogs/getBlog/${blog.querySelector(".blogId").innerHTML}`
         window.open(`http://localhost:4000/api/v1/blogs/getBlog/${blog.querySelector(".blogId").innerHTML}`, '_blank')
-    })
-    blog.querySelector(".blog-image-src").addEventListener("click", (e) => {
-        // stopPropagation disable eventBubling in other elements of the node
-        e.stopPropagation()
-        // window.location.href = `http://localhost:4000/api/v1/blogs/getBlog/${blog.querySelector(".blogId").innerHTML}`
-        window.open(`http://localhost:4000/api/v1/blogs/getBlog/${blog.querySelector(".blogId").innerHTML}`, '_blank')
-
-    })
-    blog.querySelector(".blog-description").addEventListener("click", (e) => {
-        // stopPropagation disable eventBubling in other elements of the node
-        e.stopPropagation()
-        // window.location.href = `http://localhost:4000/api/v1/blogs/getBlog/${blog.querySelector(".blogId").innerHTML}`
-        window.open(`http://localhost:4000/api/v1/blogs/getBlog/${blog.querySelector(".blogId").innerHTML}`, '_blank')
-
     })
 })
 
@@ -41,7 +26,7 @@ createButton.addEventListener(("click"), () => {
     if(document.cookie === ""){
         return window.open("/html/login.html")
     }
-    window.location.href = "/html/index.html"
+    window.location.href = "/admin/create"
 })
 
 document.body.querySelector(".search-btn").addEventListener(("click"),()=>{

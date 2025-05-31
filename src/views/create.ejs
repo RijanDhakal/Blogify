@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=favorite"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        color: white;
+        width: 100%;
+        height: 100%;
+        background-color: #001;
+        padding: 1vw 2vw;
+        font-size: 22px;
+        font-weight: 600;
+      }
+      .titleContainer {
+        margin-bottom: 3vw;
+      }
+      #editor {
+        background-color: #111;
+      }
+      .title {
+        width: 95%;
+        padding: 1vw;
+        color: black;
+        font-size: 20px;
+      }
+      .image-container {
+        background-color: #111;
+        border-radius: 10px;
+        width: 100%;
+        height: 65%;
+      }
+      .image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+      .upper {
+        padding: 0.5vw;
+        text-align: center;
+        background-color: rgb(30, 12, 192);
+        margin-bottom: 2vw;
+      }
+      .btn {
+        margin: 3vw 0;
+        width: 100%;
+        border: none;
+        background-color: blue;
+        height: 8%;
+        font-size: 30px;
+        color: rgb(113, 228, 243);
+        font-weight: bolder;
+        border-radius: 15px;
+        transition: all 0.33s ease-in-out;
+        &:hover {
+          background-color: rgb(95, 95, 233);
+          cursor: pointer;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Include stylesheet -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css"
+      rel="stylesheet"
+    />
+
+    <div class="image-container">
+      <img src="" class="image" />
+    </div>
+
+    <!-- for Thumbnail and title  -->
+    <div class="upper">
+      <span style="color: aqua">Thumbnail</span> :
+      <input type="file" class="thumbnail" required />
+    </div>
+    <div class="titleContainer">
+      Title : <input type="text" class="title" required />
+    </div>
+
+    <!-- Create the editor container -->
+    Description :
+    <div id="editor"></div>
+    <button class="btn">Upload my blog</button>
+
+    <!-- Include the Quill library -->
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+
+    <!-- Initialize Quill editor -->
+    <script>
+      document.body
+        .querySelector(".thumbnail")
+        .addEventListener("input", (e) => {
+          e.preventDefault();
+          const file = document.body.querySelector(".thumbnail").files[0];
+          console.log(file);
+          if (file) {
+            document.body.querySelector(".image").src =
+              URL.createObjectURL(file);
+          } else {
+            console.log("file not found");
+          }
+        });
+
+      const quill = new Quill("#editor", {
+        modules: {
+          toolbar: [
+            [{ header: [1, 2, false] }],
+            ["bold", "italic", "underline"],
+            [{ color: [] }],
+            ["code-block"],
+          ],
+        },
+        placeholder: "write the description here !",
+        theme: "snow", // or 'bubble'
+      });
+      document.body.querySelector(".btn").addEventListener("click", () => {
+        console.log(quill.root.textContent)
+        const formData = new FormData();
+        formData.append("title", document.body.querySelector(".title").value);
+        formData.append("description", quill.root.innerHTML);
+        formData.append(
+          "thumbnail",
+          document.body.querySelector(".thumbnail").files[0]
+        );
+        formData.append("descriptionPlainText" , quill.root.textContent.slice(0,100))
+        const upload = async () => {
+          const response = await fetch("/api/v1/blogs/create", {
+            method: "POST",
+            body: formData,
+          });
+          const data = await response.json();
+          if (data.statuscode === 200) {
+            alert("Blog created sucessfully");
+            return (window.location.href = "/admin");
+          } else {
+            return alert("Data is missing !");
+          }
+        };
+        upload();
+      });
+    </script>
+  </body>
+</html>

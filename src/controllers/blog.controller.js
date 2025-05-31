@@ -7,11 +7,16 @@ import uploadOnCloud from "../utilities/uploadOncloudinary.js";
 import { User } from "../models/user.model.js";
 
 const createBlog = asyncHandeler(async(req,res)=>{
-    const {title , description } = req.body
+    const {title , description , descriptionPlainText } = req.body
     if(
-        [title,description].some((field)=> field?.trim() === "")
+        [title,description , descriptionPlainText].some((field)=> field?.trim() === "")
     ){
-        throw new costumeError(404,"Fileds cannot be empty")
+        // throw new costumeError(404,"Fileds cannot be empty")
+        return res.status(400)
+        .json({
+            statuscode:400,
+            "message" : "Fields cannot be empty"
+        })
     }
     const thumbnail_file = req.files?.thumbnail[0]?.path
     if(!thumbnail_file){
@@ -23,6 +28,7 @@ const createBlog = asyncHandeler(async(req,res)=>{
         title:title,
         description:description,
         creator :user._id,
+        descriptionPlainText : descriptionPlainText,
         thumbnail:thumbnail.url
     })
     if(!blog){

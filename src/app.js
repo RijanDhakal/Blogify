@@ -83,7 +83,9 @@ app.get("/admin", verifyJWT , async (req, res) => {
     user : req.user
   })
 })
-
+app.get("/admin/create" , verifyJWT , async(req,res)=>{
+  return res.render("create")
+})
 app.get("/admin/login", async (req, res) => {
   return res.render("login")
 })

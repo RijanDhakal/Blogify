@@ -202,13 +202,12 @@ footer {
 }
 
 .blog-content-lower {
-  height: 5vw;
+  padding: 0.5vw 1vw;
+  height: 6vw;
   overflow: hidden;
   display: flex;
-  flex-direction: row-reverse;
-  gap: 1vw;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
 
 .blog-description {
@@ -216,13 +215,6 @@ footer {
   width: 100%;
   overflow: hidden;
   font-size: 1vw;
-}
-
-.blog-footer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 .like {

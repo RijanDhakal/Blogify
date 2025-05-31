@@ -10,6 +10,9 @@ const blogSchema = new Schema({
         type:String,
         required:true
     },
+    descriptionPlainText : {
+        type : String,
+    },
     creator :{
         type:mongoose.Types.ObjectId,
         ref:"User"
