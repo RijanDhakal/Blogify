@@ -118,9 +118,6 @@ const searchBlog = asyncHandeler(async(req,res)=>{
                 text : {
                     query : query,
                     path : "title",
-                    fuzzy : {
-                        maxEdits : 1
-                    }
                 }
             }
         },
@@ -131,7 +128,7 @@ const searchBlog = asyncHandeler(async(req,res)=>{
     if(blogs.length === 0){
         return res.render("error")
     }
-    res.render("index",{blogs})
+    res.render("home",{blogs})
 })
 export {
     updateBlog,

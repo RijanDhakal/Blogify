@@ -29,6 +29,7 @@ app.use(express.urlencoded({ extended: true }));
 import userRouter from "./routes/user.router.js";
 import blogRouter from "./routes/blog.router.js";
 import { Blog } from "./models/blog.model.js";
+import { verifyJWT } from "./middlewares/auth.middleware.js";
 
 //declare route
 app.use("/api/v1/users", userRouter);
@@ -54,7 +55,40 @@ app.get("/", async (req, res) => {
   if (blogs.length === 0) {
     return res.render("error")
   }
-  res.render("index", { blogs })
+  res.render("home", { blogs })
 })
+
+app.get("/admin", verifyJWT , async (req, res) => {
+  const { page = 1 } = req.query
+  const limit = 8
+  const blogs = await Blog.aggregate([
+    {
+      $sort: {
+        like: -1,
+        createdAt: -1
+      }
+    },
+    {
+      $skip: (Number(page) - 1) * Number(limit)
+    },
+    {
+      $limit: Number(limit)
+    }
+  ])
+  if (blogs.length === 0) {
+    return res.render("error")
+  }
+  res.render("index", { 
+    blogs ,
+    user : req.user
+  })
+})
+
+app.get("/admin/login", async (req, res) => {
+  return res.render("login")
+})
+
+
+
 
 export default app;

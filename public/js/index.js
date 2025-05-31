@@ -44,14 +44,6 @@ createButton.addEventListener(("click"), () => {
     window.location.href = "/html/index.html"
 })
 
-document.body.querySelector(".r").addEventListener(("click"), () => {
-    window.location.href = "/html/register.html"
-})
-
-document.body.querySelector(".login").addEventListener(("click"), () => {
-    window.location.href = "/html/login.html"
-})
-
 document.body.querySelector(".search-btn").addEventListener(("click"),()=>{
    const query = document.body.querySelector(".search").value
    if(!query || query === ""){

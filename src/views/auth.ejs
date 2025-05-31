@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unauthorized Access</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: #001;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        padding: 1rem;
+      }
+      .container {
+        background: #111;
+        max-width: 500px;
+        width: 100%;
+        border-radius: 16px;
+        padding: 2rem;
+        text-align: center;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+      svg {
+        height: 180px;
+        margin-bottom: 1rem;
+      }
+      h1 {
+        color: #e63946;
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
+      p {
+        color: white;
+        margin-bottom: 1.5rem;
+      }
+      .btn {
+        background-color: #1d3557;
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+        transition: background 0.3s ease;
+      }
+      .btn:hover {
+        background-color: #457b9d;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- SVG Lock Icon -->
+      <svg
+        viewBox="0 0 64 64"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="#e63946"
+      >
+        <path
+          d="M32 2a14 14 0 0 0-14 14v10H14a2 2 0 0 0-2 2v34a2 2 0 0 0 2 2h36a2 2 0 0 0 2-2V28a2 2 0 0 0-2-2h-4V16A14 14 0 0 0 32 2Zm0 4a10 10 0 0 1 10 10v10H22V16A10 10 0 0 1 32 6Zm-2 30h4v8h-4v-8Z"
+        />
+      </svg>
+
+      <h1>Unauthorized Access</h1>
+      <p>You do not have permission to view this page.</p>
+      <a href="/" class="btn">Go to Homepage</a>
+    </div>
+  </body>
+</html>

@@ -19,6 +19,7 @@ export const verifyJWT = asyncHandeler(async (req, res, next) => {
         req.user = user;
         next()
     } catch (error) {
-        throw new costumeError(500, "internal server error while verifying user")
+        // throw new costumeError(500, "internal server error while verifying user")
+        return res.render("auth")
     }
 })

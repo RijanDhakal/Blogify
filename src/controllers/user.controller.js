@@ -44,6 +44,7 @@ const registerUser = asyncHandeler(async (req, res) => {
         return res.status(404)
             .json(
                 {
+                    statuscode : 400 ,
                     "message": "User already exits"
                 }
             )
@@ -105,7 +106,8 @@ const loginUser = asyncHandeler(async (req, res) => {
         return res.status(404)
             .json(
                 {
-                    "message": "User not found"
+                    statuscode : 404 ,
+                    "message": "User doesnt exits !"
                 }
             )
     }
@@ -116,6 +118,7 @@ const loginUser = asyncHandeler(async (req, res) => {
         return res.status(404)
             .json(
                 {
+                    statuscode : 401,
                     "message": "Incorrect password"
                 }
             )
