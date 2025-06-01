@@ -52,7 +52,8 @@ nav {
 }
 
 .nav-right-create,
-.nav-right-delete {
+.nav-right-delete,
+.nav-right-logout {
   width: 100px;
   height: 25px;
   background-color: transparent;
@@ -63,6 +64,14 @@ nav {
     cursor: pointer;
     background-color: #114;
     scale: 0.95;
+  }
+}
+
+.nav-right-logout{
+  background-color: red;
+  border: none;
+  &:hover{
+    background-color: rgb(235, 40, 40);
   }
 }
 

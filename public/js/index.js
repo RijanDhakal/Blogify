@@ -41,3 +41,17 @@ document.body.querySelector(".nav-right-delete").addEventListener("click", (e) =
     e.preventDefault()
     return window.location.href = "/admin/delete"
 })
+
+document.body.querySelector(".nav-right-logout").addEventListener("click", (e) => {
+    e.preventDefault();
+    (async () => {
+        const response = await fetch("/api/v1/users/logout", {
+            method: "GET"
+        })
+        const data = await response.json()
+        if(data.statuscode === 200){
+            alert("Admin loggedOut sucessfully !");
+            return window.location.href = "/"
+        }
+    })()
+})
