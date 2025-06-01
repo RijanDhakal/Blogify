@@ -18,7 +18,7 @@ blogContainer.forEach((blog) => {
         // stopPropagation disable eventBubling in other elements of the node
         e.stopPropagation()
         // window.location.href = `http://localhost:4000/api/v1/blogs/getBlog/${blog.querySelector(".blogId").innerHTML}`
-        window.open(`http://localhost:4000/api/v1/blogs/getBlog/${blog.querySelector(".blogId").innerHTML}`, '_blank')
+        window.open(`/api/v1/blogs/getBlog/${blog.querySelector(".blogId").innerHTML}`, '_blank')
 
     })
 })

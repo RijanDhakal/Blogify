@@ -4,7 +4,7 @@ blogContainer.forEach((blog) => {
     blog.addEventListener("click", (e) => {
         // stopPropagation disable eventBubling in other elements of the node
         e.stopPropagation()
-        window.open(`http://localhost:4000/api/v1/blogs/getBlog/${blog.querySelector(".blogId").innerHTML}`, '_blank')
+        window.open(`/api/v1/blogs/getBlog/${blog.querySelector(".blogId").innerHTML}`, '_blank')
     })
 })
 
