@@ -244,3 +244,18 @@ footer {
   padding: 0.5vw;
   color: white;
 }
+
+.delete-blog{
+  width: 100%;
+  height: 10%;
+  background-color: red;
+  color: white;
+  font-weight: bolder;
+  border: none;
+  transition: all 0.25s ease-in-out;
+  &:hover{
+    cursor: pointer;
+    scale: 0.9;
+    background-color: rgb(255, 59, 59);
+  }
+}

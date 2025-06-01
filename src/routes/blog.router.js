@@ -4,7 +4,7 @@ import {
   deleteBlog,
   getBlog,
   searchBlog,
-  updateBlog,
+  // updateBlog,
 } from "../controllers/blog.controller.js";
 import { verifyJWT } from "../middlewares/auth.middleware.js";
 import { upload } from "../middlewares/multer.middleware.js";
@@ -24,8 +24,8 @@ router.route("/create").post(
   createBlog
 );
 
-router.route("/update").patch(verifyJWT,updateBlog);
-router.route("/delete").delete(verifyJWT ,deleteBlog);
+// router.route("/update").patch(verifyJWT,updateBlog);
+router.route("/delete").post(verifyJWT ,deleteBlog);
 router.route("/getBlog/:blogId").get(getBlog)
 router.route("/search").get(searchBlog)
 

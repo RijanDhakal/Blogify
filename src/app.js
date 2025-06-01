@@ -30,6 +30,7 @@ import userRouter from "./routes/user.router.js";
 import blogRouter from "./routes/blog.router.js";
 import { Blog } from "./models/blog.model.js";
 import { verifyJWT } from "./middlewares/auth.middleware.js";
+import mongoose from "mongoose";
 
 //declare route
 app.use("/api/v1/users", userRouter);
@@ -58,7 +59,7 @@ app.get("/", async (req, res) => {
   res.render("home", { blogs })
 })
 
-app.get("/admin", verifyJWT , async (req, res) => {
+app.get("/admin", verifyJWT, async (req, res) => {
   const { page = 1 } = req.query
   const limit = 8
   const blogs = await Blog.aggregate([
@@ -78,18 +79,48 @@ app.get("/admin", verifyJWT , async (req, res) => {
   if (blogs.length === 0) {
     return res.render("error")
   }
-  res.render("index", { 
-    blogs ,
-    user : req.user
+  res.render("index", {
+    blogs,
+    user: req.user
   })
 })
-app.get("/admin/create" , verifyJWT , async(req,res)=>{
+app.get("/admin/create", verifyJWT, async (req, res) => {
   return res.render("create")
 })
 app.get("/admin/login", async (req, res) => {
   return res.render("login")
 })
 
+app.get("/admin/delete", verifyJWT, async (req, res) => {
+  const { page = 1 } = req.query
+  const limit = 8
+  const blogs = await Blog.aggregate([
+    {
+      $match:{
+        creator : new mongoose.Types.ObjectId(req.user._id)
+      }
+    },
+    {
+      $sort: {
+        like: -1,
+        createdAt: -1
+      }
+    },
+    {
+      $skip: (Number(page) - 1) * Number(limit)
+    },
+    {
+      $limit: Number(limit)
+    }
+  ])
+  if (blogs.length === 0) {
+    return res.render("error")
+  }
+  res.render("delete", {
+    blogs,
+    user: req.user
+  })
+})
 
 
 

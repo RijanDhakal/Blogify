@@ -70,3 +70,12 @@ body {
   color: #abb2bf; /* Light text color */
   font-family: "Source Code Pro", monospace, monospace; /* Monospaced font */
 }
+
+.footer{
+  margin-top: 3vw;
+  text-align: center;
+  color: white;
+  background-color: #111;
+  padding: 1vw;
+  font-size: 20px;
+}

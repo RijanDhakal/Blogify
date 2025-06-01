@@ -23,16 +23,21 @@ navigationButtons.forEach((button) => {
 const createButton = document.body.querySelector(".nav-right-create")
 createButton.addEventListener(("click"), () => {
     console.log(document.cookie)
-    if(document.cookie === ""){
+    if (document.cookie === "") {
         return window.open("/html/login.html")
     }
     window.location.href = "/admin/create"
 })
 
-document.body.querySelector(".search-btn").addEventListener(("click"),()=>{
-   const query = document.body.querySelector(".search").value
-   if(!query || query === ""){
-    return alert("No query received")
-   }
-   window.location.href = `/api/v1/blogs/search?query=${query}`
+document.body.querySelector(".search-btn").addEventListener(("click"), () => {
+    const query = document.body.querySelector(".search").value
+    if (!query || query === "") {
+        return alert("No query received")
+    }
+    window.location.href = `/api/v1/blogs/search?query=${query}`
+})
+
+document.body.querySelector(".nav-right-delete").addEventListener("click", (e) => {
+    e.preventDefault()
+    return window.location.href = "/admin/delete"
 })
