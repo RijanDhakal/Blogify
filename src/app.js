@@ -11,13 +11,13 @@ app.set("view engine", "ejs");
 app.set("views", path.resolve("src/views"));
 
 // EJS is a server side rendering engine so no cors is needed
-// import cors from "cors";
-// app.use(
-//   cors({
-//     origin: process.env.CORS_ORIGIN,
-//     credentials: true,
-//   })
-// );
+import cors from "cors";
+app.use(
+  cors({
+    origin: process.env.CORS_ORIGIN,
+    credentials: true,
+  })
+);
 
 app.use(cookieParser()); // must use to work with verification
 app.use(express.static("public")); // this is controversial
