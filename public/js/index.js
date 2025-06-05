@@ -22,7 +22,6 @@ navigationButtons.forEach((button) => {
 //create blog
 const createButton = document.body.querySelector(".nav-right-create")
 createButton.addEventListener(("click"), () => {
-    console.log(document.cookie)
     if (document.cookie === "") {
         return window.open("/html/login.html")
     }

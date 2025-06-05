@@ -115,7 +115,7 @@ const loginUser = asyncHandeler(async (req, res) => {
     const isPasswprdCorrect = await user.isPasswordValid(password)
     if (!isPasswprdCorrect) {
         // throw new costumeError(400, "Incorrect password")
-        return res.status(404)
+        return res.status(401)
             .json(
                 {
                     statuscode : 401,

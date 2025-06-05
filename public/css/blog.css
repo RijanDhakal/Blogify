@@ -55,9 +55,22 @@ body {
 }
 
 .blog-description {
+  width: 100%;
+  height: auto;
   font-size: 1vw;
   line-height: 1.8;
+  gap: 1vw;
   white-space: pre-wrap; /* This also helps preserve formatting */
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.blog-description p{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .ql-code-block-container {

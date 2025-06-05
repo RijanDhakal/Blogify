@@ -151,6 +151,9 @@
           else if(data.statuscode === 404){
             return alert("user doesn't exits")
           }
+          else if(data.statuscode === 401){
+            return alert("Incorrect Password")
+          }
           else{
             return alert("Internal servor error !")
           }
