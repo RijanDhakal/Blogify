@@ -268,3 +268,64 @@ footer {
     background-color: rgb(255, 59, 59);
   }
 }
+
+
+@media (max-width :600px) {
+  body,html{
+    width: 100dvw;
+    height: 100dvh;
+    overflow-x: hidden;
+  }
+  main{
+    height: auto;
+    width: 100%;
+  }
+  nav{
+    height: 50px;
+    padding-left: 10px;
+  }
+  .logo{
+    font-size: 3vh;
+  }
+  .search{
+    width: 115px
+  }
+  .blog-container{
+    row-gap: 5vh;
+    width: 100%;
+    height: auto;
+  }
+  .blog{
+    width: 95%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .blog-image-src{
+    width: 90%;
+    height: 60%;
+  }
+  .blog-content{
+    height: auto;
+  }
+  .blog-content-lower{
+    height: auto;
+  }
+  .blog-title{
+    font-size: 18px;
+  }
+  .blog-description{
+    height: auto;
+    font-size: 14px;
+    width: 90%;
+    text-align: center;
+    padding-bottom: 20px;
+  }
+  .nv{
+    margin: 20px 0;
+    font-size: 20px;
+    padding: 5px;
+  }
+}

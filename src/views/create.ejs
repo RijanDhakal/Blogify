@@ -122,14 +122,15 @@
             ["bold", "italic", "underline"],
             [{ color: [] }],
             ["code-block"],
-            ["image"]
+            ["image"],
           ],
         },
         placeholder: "write the description here !",
         theme: "snow", // or 'bubble'
       });
       document.body.querySelector(".btn").addEventListener("click", () => {
-        console.log(quill.root.textContent)
+        document.body.querySelector(".btn").textContent = "Uploading blog ...";
+        document.body.querySelector(".btn").style.backgroundColor = "blue";
         const formData = new FormData();
         formData.append("title", document.body.querySelector(".title").value);
         formData.append("description", quill.root.innerHTML);
@@ -137,7 +138,10 @@
           "thumbnail",
           document.body.querySelector(".thumbnail").files[0]
         );
-        formData.append("descriptionPlainText" , quill.root.textContent.slice(0,100))
+        formData.append(
+          "descriptionPlainText",
+          quill.root.textContent.slice(0, 100)
+        );
         const upload = async () => {
           const response = await fetch("/api/v1/blogs/create", {
             method: "POST",
@@ -145,9 +149,15 @@
           });
           const data = await response.json();
           if (data.statuscode === 200) {
+            document.body.querySelector(".btn").textContent =
+              "Blog created sucessfully";
+            document.body.querySelector(".btn").style.backgroundColor = "green";
             alert("Blog created sucessfully");
             return (window.location.href = "/admin");
           } else {
+            document.body.querySelector(".btn").textContent =
+              "Failed";
+            document.body.querySelector(".btn").style.backgroundColor = "red";
             return alert("Data is missing !");
           }
         };
